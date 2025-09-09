@@ -1,6 +1,4 @@
-﻿using System.Transactions;
-using FinanceHub.Core.Models;
-using FinanceHub.Web.Data;
+﻿using FinanceHub.Web.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

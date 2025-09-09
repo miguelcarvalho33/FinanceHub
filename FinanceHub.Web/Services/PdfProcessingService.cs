@@ -1,11 +1,9 @@
-﻿using UglyToad.PdfPig;
-using UglyToad.PdfPig.Content;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 using FinanceHub.Core.Models;
 using FinanceHub.Core.Parsing;
 using FinanceHub.Web.Data;
-using Microsoft.Extensions.DependencyInjection;
+using UglyToad.PdfPig;
 
 namespace FinanceHub.Web.Services
 {
@@ -62,14 +60,17 @@ namespace FinanceHub.Web.Services
             using (var scope = _scopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<FinanceDbContext>();
+
+                var categorizationService = scope.ServiceProvider.GetRequiredService<CategorizationService>();
+
                 foreach (var filePath in pdfFiles)
                 {
-                    ProcessFile(filePath, dbContext, _parsers);
+                    ProcessFile(filePath, dbContext, _parsers, categorizationService);
                 }
             }
         }
 
-        private void ProcessFile(string filePath, FinanceDbContext dbContext, IEnumerable<IPdfParser> parsers)
+        private void ProcessFile(string filePath, FinanceDbContext dbContext, IEnumerable<IPdfParser> parsers, CategorizationService categorizationService)
         {
             var fileName = Path.GetFileName(filePath);
             _logger.LogInformation("--- A processar '{FileName}' ---", fileName);
@@ -80,9 +81,6 @@ namespace FinanceHub.Web.Services
                 {
                     pdfText = GetTextWithLayout(pdf);
                 }
-
-                // Linha de log desativada para uma saída mais limpa
-                // _logger.LogInformation("Texto 'embelezado' extraído do PDF '{FileName}':\n--- INÍCIO DO TEXTO ---\n{PdfText}\n--- FIM DO TEXTO ---", fileName, pdfText);
 
                 var parser = parsers.FirstOrDefault(p => p.CanParse(pdfText));
                 if (parser == null)
@@ -97,6 +95,8 @@ namespace FinanceHub.Web.Services
                 int newTransactionsCount = 0;
                 foreach (var tx in transactions)
                 {
+                    categorizationService.ProcessTransaction(tx);
+
                     tx.Hash = CreateTransactionHash(tx);
                     var exists = dbContext.Transactions.Any(t => t.Hash == tx.Hash);
                     if (!exists)

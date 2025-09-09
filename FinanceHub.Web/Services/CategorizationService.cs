@@ -1,7 +1,7 @@
-﻿using FinanceHub.Core.Models;
+﻿using System.Text.RegularExpressions;
+using FinanceHub.Core.Models;
 using FinanceHub.Web.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
 
 namespace FinanceHub.Web.Services
 {

@@ -1,5 +1,5 @@
-﻿using FinanceHub.Core.Models;       
-using Microsoft.EntityFrameworkCore; 
+﻿using FinanceHub.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinanceHub.Web.Data
 {

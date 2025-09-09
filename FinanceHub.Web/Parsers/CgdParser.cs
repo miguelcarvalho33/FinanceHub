@@ -1,7 +1,7 @@
-﻿using FinanceHub.Core.Models;
-using FinanceHub.Core.Parsing;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
+using FinanceHub.Core.Models;
+using FinanceHub.Core.Parsing;
 
 namespace FinanceHub.Web.Parsers
 {
