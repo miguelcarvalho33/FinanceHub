@@ -20,8 +20,8 @@ builder.Services.AddDbContext<FinanceDbContext>(options =>
     options.UseSqlite(connectionString));
 
 
-builder.Services.AddSingleton<IPdfParser, SantanderParser>(); // MUDADO DE AddScoped
-builder.Services.AddSingleton<IPdfParser, CgdParser>();     // MUDADO DE AddScoped
+builder.Services.AddSingleton<IPdfParser, SantanderParser>();
+builder.Services.AddSingleton<IPdfParser, CgdParser>();
 
 builder.Services.AddScoped<CategorizationService>();
 
