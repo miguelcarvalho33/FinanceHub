@@ -1,9 +1,7 @@
-﻿// FinanceHub.Web/Data/FinanceDbContext.cs
+﻿using FinanceHub.Core.Models;       
+using Microsoft.EntityFrameworkCore; 
 
-using FinanceHub.Core.Models;       // <-- Verifique este using
-using Microsoft.EntityFrameworkCore; // <-- Verifique este using
-
-namespace FinanceHub.Web.Data // <-- A LINHA MAIS IMPORTANTE!
+namespace FinanceHub.Web.Data
 {
     public class FinanceDbContext : DbContext
     {

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// FinanceHub.Core/Models/MbwayRule.cs
+using System.ComponentModel.DataAnnotations;
 
 namespace FinanceHub.Core.Models
 {
@@ -6,7 +7,7 @@ namespace FinanceHub.Core.Models
     {
         [Key]
         public int Id { get; set; }
-        public string PhoneNumber { get; set; }
+        public string PhoneNumberSuffix { get; set; }
         public string ContactName { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
