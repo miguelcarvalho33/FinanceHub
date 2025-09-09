@@ -31,7 +31,7 @@ bld/
 [Oo]bj/
 [Oo]ut/
 [Ll]og/
-[Ll]ogs/
+# [Ll]ogs/ is commented out as we add a specific /logs/ rule below
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -361,3 +361,20 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# -----------------------------------------------
+# FinanceHub specific files and folders to ignore
+# -----------------------------------------------
+
+# Ignore the database file and its temporary files
+/financehub.db
+/financehub.db-shm
+/financehub.db-wal
+
+# Ignore log files
+/logs/
+
+# Ignore folders with PDF bank statements as defined in appsettings.json
+/extratos_para_processar/
+/extratos_ja_processados/
+/extratos_com_erro/
