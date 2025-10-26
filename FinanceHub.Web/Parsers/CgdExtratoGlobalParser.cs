@@ -170,7 +170,7 @@ namespace FinanceHub.Web.Parsers
 
  foreach (Match m in rowRx.Matches(text))
  {
- var name = Regex.Replace(m.Groups["name"].Value, "\s+", " ").Trim();
+ var name = Regex.Replace(m.Groups["name"].Value, "\\s+", " ").Trim();
  var dd = new DirectDebit
  {
  CreationDate = DateTime.TryParse(m.Groups["d"].Value, out var d) ? d : null,

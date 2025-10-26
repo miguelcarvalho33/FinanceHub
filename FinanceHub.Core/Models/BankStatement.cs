@@ -17,6 +17,7 @@ namespace FinanceHub.Core.Models
  [MaxLength(20)] public string SWIFT { get; set; }
  [Column(TypeName="decimal(18,2)")] public decimal? PreviousBalance { get; set; }
  [Column(TypeName="decimal(18,2)")] public decimal? FinalBalance { get; set; }
+ [Column(TypeName="decimal(18,2)")] public decimal? SavingsBalance { get; set; }
 
  public ICollection<Loan> Loans { get; set; } = new List<Loan>();
  public ICollection<DirectDebit> DirectDebits { get; set; } = new List<DirectDebit>();
