@@ -15,5 +15,8 @@ namespace FinanceHub.Core.Models
         public Category? Category { get; set; }
         public string? CleanDescription { get; set; }
         public string Hash { get; set; }
+        // Link to BankStatement when available
+        public int? BankStatementId { get; set; }
+        public BankStatement? BankStatement { get; set; }
     }
 }
